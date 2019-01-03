@@ -1,0 +1,9 @@
+<% if @cuisine.errors.any? %>
+  <p>Você deve informar o nome da cozinha</p>
+<% end %>
+
+<%= form_with model: @cuisine do |f| %>
+  <%= f.label :name, 'Nome' %>
+  <%= f.text_field :name %>
+  <%= f.submit 'Enviar' %>
+<% end %>
