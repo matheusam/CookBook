@@ -46,6 +46,7 @@ feature 'User register recipe' do
     fill_in 'Como Preparar', with: ''
     click_on 'Enviar'
 
+
     expect(page).to have_content('Você deve informar todos os dados da receita')
   end
 end
