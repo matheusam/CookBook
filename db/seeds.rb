@@ -1,7 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+RecipeType.create(name: 'Sobremesa')
+RecipeType.create(name: 'Entrada')
+Cuisine.create(name: 'Portuguesa')
+brazilian_cuisine = Cuisine.create(name: 'Brasileira')
+italian_cuisine = Cuisine.create(name: 'Italiana')
+recipe_type = RecipeType.create(name: 'Prato Principal')
+Recipe.create(title: 'Feijoada', recipe_type: recipe_type,
+              cuisine: brazilian_cuisine,
+              difficulty: 'Médio', cook_time: 120,
+              ingredients: 'Feijão e carnes.',
+              cook_method: 'Misturar o feijão com as carnes.')
+
+Recipe.create(title: 'Macarronada', recipe_type: recipe_type,
+              cuisine: italian_cuisine,
+              difficulty: 'Fácil', cook_time: 30,
+              ingredients: 'Macarrão e molho de tomate',
+              cook_method: 'Cozinhar o macarrão e misturar com o molho.')

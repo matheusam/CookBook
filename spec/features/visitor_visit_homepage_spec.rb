@@ -63,4 +63,11 @@ feature 'Visitor visit homepage' do
     expect(page).to have_css('li', text: another_recipe.difficulty)
     expect(page).to have_css('li', text: "#{another_recipe.cook_time} minutos")
   end
+
+  scenario 'and doesn\'t have recipes' do
+    visit root_path
+
+    expect(page).to have_content('Ainda não temos nenhuma receita. '\
+                                 'Que tal enviar uma?')
+  end
 end
