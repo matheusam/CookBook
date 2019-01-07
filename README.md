@@ -1,24 +1,17 @@
-# README
+# Cookbook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Instruções
 
-Things you may want to cover:
+Você e seu par devem executar as tarefas deste [Trello](https://trello.com/b/95Zg94pv)
+acompanhados pelo time Campus Code.
 
-* Ruby version
+O fluxo de trabalho deve seguir o modelo Driver-Navigator do Pair Programming.
 
-* System dependencies
+Ao final de cada cenário de teste sempre consulte os Seniors da Campus Code.
 
-* Configuration
+Dependências:
 
-* Database creation
+* Ruby 2.6.0
 
-* Database initialization
+* Rails 5.2.2
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
