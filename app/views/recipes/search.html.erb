@@ -1,0 +1,11 @@
+<h3 class="text-center mb-4">Resultado da pesquisa:</h3>
+
+<% if @recipes.any? %>
+  <div class="row">
+    <%= render partial: 'recipe', collection: @recipes %>
+  </div>
+<% else %>
+  <p class="text-center">
+    Nenhum resultado encontrado.
+  </p>
+<% end %>

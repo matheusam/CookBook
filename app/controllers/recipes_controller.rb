@@ -38,6 +38,10 @@ class RecipesController < ApplicationController
     end
   end
 
+  def search
+    @recipes = Recipe.where('title LIKE ?', "%#{params[:search]}%")
+  end
+
   private
 
   def set_recipe
