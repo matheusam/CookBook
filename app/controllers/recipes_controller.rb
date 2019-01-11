@@ -1,6 +1,8 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
   before_action :set_recipe_type, only: %i[index]
+  #before_action :authenticate_user!, only: %i[new create edit update destroy]
+
   def index
     @recipes = Recipe.last(6)
     @recipe_types = RecipeType.all
@@ -11,7 +13,9 @@ class RecipesController < ApplicationController
     @recipe_types = RecipeType.all
   end
 
-  def show; end
+  def show
+    @user =
+  end
 
   def new
     @recipe = Recipe.new
