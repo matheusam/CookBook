@@ -1,1 +1,4 @@
+<% if @recipe_type.errors.any? %>
+  <p><%= @recipe_type.errors[:name] %></p>
+<% end %>
 <%= render partial: 'form', locals: { recipe_type: @recipe_type } %>

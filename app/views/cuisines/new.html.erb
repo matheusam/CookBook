@@ -1,5 +1,5 @@
 <% if @cuisine.errors.any? %>
-  <p>Você deve informar o nome da cozinha</p>
+  <p><%= @cuisine.errors[:name] %></p>
 <% end %>
 
 <%= form_with model: @cuisine, class: 'mt-4' do |f| %>
