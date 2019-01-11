@@ -2,6 +2,11 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
   before_action :set_recipe_type, only: %i[index]
   def index
+    @recipes = Recipe.last(6)
+    @recipe_types = RecipeType.all
+  end
+
+  def all_recipes
     @recipes = Recipe.all
     @recipe_types = RecipeType.all
   end
