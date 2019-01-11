@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit update]
+  before_action :set_recipe, only: %i[show edit update destroy]
   def index
     @recipes = Recipe.all
   end
@@ -40,6 +40,12 @@ class RecipesController < ApplicationController
 
   def search
     @recipes = Recipe.where('title LIKE ?', "%#{params[:search]}%")
+  end
+
+  def destroy
+    flash[:del] = "Receita apagada com sucesso!"
+    @recipe.destroy
+    redirect_to root_path
   end
 
   private

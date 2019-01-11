@@ -4,7 +4,7 @@
 </section>
 
 <h3 class="text-center mb-4">Receitas</h3>
-
+<%= flash[:del] %>
 <% if @recipes.any? %>
   <div class="row">
     <%= render partial: 'recipe', collection: @recipes %>
