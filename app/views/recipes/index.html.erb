@@ -5,6 +5,14 @@
 
 <h3 class="text-center mb-4">Receitas</h3>
 <%= flash[:del] %>
+<div class="row float-left ml-0 mr-1">
+  <ul class="list-group">
+    <% @recipe_types.each do |recipe_type| %>
+      <li class="list-group-item"><%= link_to recipe_type.name, recipe_type %></li>
+    <% end %>
+  </ul>
+</div>
+
 <% if @recipes.any? %>
   <div class="row">
     <%= render partial: 'recipe', collection: @recipes %>

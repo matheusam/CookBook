@@ -1,1 +1,10 @@
 <h1><%= @recipe_type.name %></h1>
+<% if @recipe_type.recipes.any? %>
+  <div class="row">
+    <%= render partial: '/recipes/recipe', collection: @recipe_type.recipes %>
+  </div>
+<% else %>
+  <p class="text-center">
+    Nenhum resultado encontrado.
+  </p>
+<% end %>

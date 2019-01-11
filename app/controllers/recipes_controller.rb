@@ -1,7 +1,9 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
+  before_action :set_recipe_type, only: %i[index]
   def index
     @recipes = Recipe.all
+    @recipe_types = RecipeType.all
   end
 
   def show; end
@@ -49,6 +51,10 @@ class RecipesController < ApplicationController
   end
 
   private
+
+  def set_recipe_type
+    @recipe_types = RecipeType.all
+  end
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
