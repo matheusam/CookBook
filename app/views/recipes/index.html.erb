@@ -5,6 +5,9 @@
 
 <h3 class="text-center mb-4">Receitas recentes</h3>
 <%= flash[:del] %>
+<% if user_signed_in? %>
+  <p><%= "Bem vindo, #{current_user.email}" %></p>
+<% end %>
 <div class="row float-left ml-0 mr-1">
   <ul class="list-group">
     <% @recipe_types.each do |recipe_type| %>
