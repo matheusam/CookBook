@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Visitor view recipe details' do
-  scenario 'successfully' do
+  scenario 'successfully',login:true do
     #cria os dados necessários
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
@@ -9,7 +9,8 @@ feature 'Visitor view recipe details' do
                            cuisine: cuisine, difficulty: 'Médio',
                            cook_time: 60,
                            ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                           user: @user)
 
     # simula a ação do usuário
     visit root_path
@@ -28,7 +29,7 @@ feature 'Visitor view recipe details' do
     expect(page).to have_css('p', text: recipe.cook_method)
   end
 
-  scenario 'and return to recipe list' do
+  scenario 'and return to recipe list',login:true do
     #cria os dados necessários
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
@@ -36,7 +37,8 @@ feature 'Visitor view recipe details' do
                            cuisine: cuisine, difficulty: 'Médio',
                            cook_time: 60,
                            ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                           user: @user)
 
     # simula a ação do usuário
     visit root_path

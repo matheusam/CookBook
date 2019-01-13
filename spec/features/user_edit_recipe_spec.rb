@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 feature 'User update recipe' do
-  scenario 'successfully' do
+  scenario 'successfully',login:true do
+
     recipe_type = RecipeType.create(name: 'Sobremesa')
     RecipeType.create(name: 'Entrada')
     cuisine = Cuisine.create(name: 'Brasileira')
@@ -9,7 +10,8 @@ feature 'User update recipe' do
     Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                  user: @user)
 
     # simula a ação do usuário
     visit root_path
@@ -36,13 +38,15 @@ feature 'User update recipe' do
     expect(page).to have_css('p', text: 'Faça um bolo e uma cobertura de chocolate')
   end
 
-  scenario 'and must fill in all fields' do
+  scenario 'and must fill in all fields',login:true do
+    user = User.create(email: 'ze1@ig.com', password: '12345678')
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
     Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
                   recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
-                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                  user: @user)
 
     # simula a ação do usuário
     visit root_path

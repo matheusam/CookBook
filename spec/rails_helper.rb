@@ -58,4 +58,20 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+###bug  RSpec.configure do |config|
+###bug    config.include Devise::Test::IntegrationHelpers, type: :controller
+###bug    config.include Devise::Test::IntegrationHelpers, type: :view
+###bug  end
+  config.before(:each,login: true) do
+    @user = User.create(email:'rspec@test',
+                password:'rspec@test')
+
+    visit root_path
+    click_on 'Login'
+    fill_in 'Email', with: 'rspec@test'
+    fill_in 'Senha', with: 'rspec@test'
+    click_on 'Entrar'
+  end
+
 end

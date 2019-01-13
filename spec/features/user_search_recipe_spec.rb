@@ -1,18 +1,20 @@
 require 'rails_helper'
 feature 'User search recipe' do
-  scenario 'user find only searched recipes' do
+  scenario 'user find only searched recipes',login:true do
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
     marmelada = Recipe.create(title: 'Marmelada', recipe_type: recipe_type,
                            cuisine: cuisine, difficulty: 'fácil',
                            cook_time: 10,
                            ingredients: 'Marmelo',
-                           cook_method: 'Cozinhe o marmelo no fogo')
+                           cook_method: 'Cozinhe o marmelo no fogo',
+                           user: @user)
    goiabada = Recipe.create(title: 'Goiabada', recipe_type: recipe_type,
                           cuisine: cuisine, difficulty: 'médio',
                           cook_time: 20,
                           ingredients: 'Goiaba',
-                          cook_method: 'Cozinhe a goiaba no fogo')
+                          cook_method: 'Cozinhe a goiaba no fogo',
+                          user: @user)
 
   visit root_path
   fill_in 'Procurar', with: marmelada.title
@@ -34,19 +36,21 @@ feature 'User search recipe' do
     expect(page).to have_css('p', text:'Nenhum resultado encontrado.')
   end
 
-  scenario 'find more than one' do
+  scenario 'find more than one',login:true do
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
     marmelada = Recipe.create(title: 'Marmelada', recipe_type: recipe_type,
                            cuisine: cuisine, difficulty: 'fácil',
                            cook_time: 10,
                            ingredients: 'Marmelo',
-                           cook_method: 'Cozinhe o marmelo no fogo')
+                           cook_method: 'Cozinhe o marmelo no fogo',
+                           user: @user)
    goiabada = Recipe.create(title: 'Goiabada', recipe_type: recipe_type,
                           cuisine: cuisine, difficulty: 'médio',
                           cook_time: 20,
                           ingredients: 'Goiaba',
-                          cook_method: 'Cozinhe a goiaba no fogo')
+                          cook_method: 'Cozinhe a goiaba no fogo',
+                          user: @user)
 
   visit root_path
   fill_in 'Procurar', with: 'ada'

@@ -1,13 +1,14 @@
 require 'rails_helper'
 feature 'User delete recipe' do
-  scenario 'successfully' do
+  scenario 'successfully',login:true do
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
     marmelada = Recipe.create(title: 'Marmelada', recipe_type: recipe_type,
                            cuisine: cuisine, difficulty: 'fácil',
                            cook_time: 10,
                            ingredients: 'Marmelo',
-                           cook_method: 'Cozinhe o marmelo no fogo')
+                           cook_method: 'Cozinhe o marmelo no fogo',
+                           user: @user)
 
     visit root_path
     click_on  marmelada.title

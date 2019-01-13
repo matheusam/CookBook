@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
   before_action :set_recipe_type, only: %i[index]
-  #before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
 
   def index
     @recipes = Recipe.last(6)
@@ -13,9 +13,7 @@ class RecipesController < ApplicationController
     @recipe_types = RecipeType.all
   end
 
-  def show
-    @user =
-  end
+  def show; end
 
   def new
     @recipe = Recipe.new
@@ -24,7 +22,9 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    params = recipe_params
+    params[:user] = current_user
+    @recipe = Recipe.new(params)
     if @recipe.save
       redirect_to @recipe
     else
