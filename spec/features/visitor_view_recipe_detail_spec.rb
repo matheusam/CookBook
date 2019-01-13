@@ -48,4 +48,58 @@ feature 'Visitor view recipe details' do
     # expectativa da rota atual
     expect(current_path).to eq(root_path)
   end
+
+  scenario 'non authed user cant delete or edit',login:true do
+    recipe_type = RecipeType.create(name: 'Sobremesa')
+    cuisine = Cuisine.create(name: 'Brasileira')
+    recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
+                           cuisine: cuisine, difficulty: 'Médio',
+                           cook_time: 60,
+                           ingredients: 'Farinha, açucar, cenoura',
+                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                           user: @user)
+
+    # simula a ação do usuário
+    click_on 'Sair'
+    visit root_path
+    click_on recipe.title
+
+    expect(page).not_to have_css('a.btn:nth-child(14)', text:"Editar")
+    expect(page).not_to have_css('a.btn:nth-child(15)', text:"Deletar")
+  end
+
+  scenario 'only authed user owner can delete or edit',login:true do
+    recipe_type = RecipeType.create(name: 'Sobremesa')
+    cuisine = Cuisine.create(name: 'Brasileira')
+    recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
+                           cuisine: cuisine, difficulty: 'Médio',
+                           cook_time: 60,
+                           ingredients: 'Farinha, açucar, cenoura',
+                           cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
+                           user: @user)
+
+    # simula a ação do usuário
+    visit root_path
+    click_on recipe.title
+
+    expect(page).to have_css('a.btn:nth-child(14)', text:"Editar")
+    expect(page).to have_css('a.btn:nth-child(15)', text:"Deletar")
+
+    click_on 'Sair'
+    
+    user = User.create(email:'outro@email',
+                password:'outro@email')
+
+    visit root_path
+    click_on 'Login'
+    fill_in 'Email', with: 'outro@email'
+    fill_in 'Senha', with: 'outro@email'
+    click_on 'Entrar'
+
+    visit root_path
+    click_on recipe.title
+
+    expect(page).not_to have_css('a.btn:nth-child(14)', text:"Editar")
+    expect(page).not_to have_css('a.btn:nth-child(15)', text:"Deletar")
+  end
 end

@@ -12,5 +12,7 @@
 <p><%= @recipe.user.email %></p>
 
 <%= link_to 'Voltar', root_path, class: 'btn btn-secondary' %>
-<%= link_to 'Editar', edit_recipe_path(@recipe), class: 'btn btn-primary' %>
-<%= link_to 'Deletar', @recipe, method: :delete, data: {confirm: 'Deseja apagar essa receita?'} , class: 'btn btn-warning' %>
+<% if user_signed_in? && @same_user %>
+  <%= link_to 'Editar', edit_recipe_path(@recipe), class: 'btn btn-primary' %>
+  <%= link_to 'Deletar', @recipe, method: :delete, data: {confirm: 'Deseja apagar essa receita?'} , class: 'btn btn-warning' %>
+<% end %>

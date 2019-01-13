@@ -13,7 +13,10 @@ class RecipesController < ApplicationController
     @recipe_types = RecipeType.all
   end
 
-  def show; end
+  def show
+    @same_user = @recipe.user.email == current_user.email
+    #byebug
+  end
 
   def new
     @recipe = Recipe.new
