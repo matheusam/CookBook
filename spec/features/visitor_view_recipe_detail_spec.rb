@@ -60,12 +60,12 @@ feature 'Visitor view recipe details' do
                            user: @user)
 
     # simula a ação do usuário
-    click_on 'Sair'
     visit root_path
+    click_on 'Sair'
     click_on recipe.title
 
-    expect(page).not_to have_css('a.btn:nth-child(14)', text:"Editar")
-    expect(page).not_to have_css('a.btn:nth-child(15)', text:"Deletar")
+    expect(page).not_to have_css('a', text:"Editar")
+    expect(page).not_to have_css('a', text:"Deletar")
   end
 
   scenario 'only authed user owner can delete or edit',login:true do
@@ -86,7 +86,7 @@ feature 'Visitor view recipe details' do
     expect(page).to have_css('a.btn:nth-child(15)', text:"Deletar")
 
     click_on 'Sair'
-    
+
     user = User.create(email:'outro@email',
                 password:'outro@email')
 

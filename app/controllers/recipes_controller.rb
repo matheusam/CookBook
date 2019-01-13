@@ -14,8 +14,11 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @same_user = @recipe.user.email == current_user.email
-    #byebug
+    if current_user
+      @same_user = @recipe.user.email == current_user.email
+    else
+      @same_user = false
+    end
   end
 
   def new
