@@ -1,23 +1,17 @@
-inherit_from: .rubocop_todo.yml
-
 Documentation:
-  Enabled: false
-EndOfLine:
   Enabled: false
 Rails:
   Enabled: true
+Style/FrozenStringLiteralComment:
+  Enabled: false
 AllCops:
-  TargetRubyVersion: 2.6.0
-  Include:
-    - '**/Rakefile'
-    - '**/config.ru'
+  TargetRubyVersion: 2.6
   Exclude:
     - 'bin/**/*'
+    - 'vendor/**/*'
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
-    - !ruby/regexp /old_and_unused\.rb$/
-    - 'Rakefile'
-    - 'spec/spec_helper.rb'
     - 'spec/rails_helper.rb'
-    - 'app/controllers/users/sessions_controller.rb'
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context', 'feature', 'scenario', 'let']

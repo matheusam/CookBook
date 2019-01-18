@@ -1,0 +1,5 @@
+<%= form_for @user do |f| %>
+  <%= f.label :photo, 'Foto'%>
+  <%= f.file_field :photo %>
+  <%= f.submit 'Enviar', class: 'btn btn-primary' %>
+<% end %>
