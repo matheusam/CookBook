@@ -33,5 +33,9 @@
   <%= f.label :cook_method, 'Como Preparar' %>
   <%= f.text_area :cook_method, class: 'form-control col-md-6' %>
   </div>
+  <div>
+  <%= f.label :photo, 'Foto' %>
+  <%= f.file_field :photo, class: 'form-control col-md-6' %>
+  </div>
   <%= f.submit 'Enviar', class: 'btn btn-primary' %>
 <% end %>
