@@ -1,4 +1,8 @@
 <%= form_for @user do |f| %>
+<h3>Foto atual:</h3>
+<% if @user.photo.attached? %>
+  <%= image_tag @user.photo, class:'avatar'%>
+<% end %>
   <%= f.label :photo, 'Foto'%>
   <%= f.file_field :photo %>
   <%= f.submit 'Enviar', class: 'btn btn-primary' %>

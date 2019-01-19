@@ -1,0 +1,12 @@
+<%= form_with model: @recipes_list, class: 'mt-4', local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :name, 'Nome da lista:' %>
+    <%= f.text_field :name, class: 'form-control col-md-6' %>
+  </div>
+  <div class="form-group">
+  <%= f.label :recipes_list, 'Selecione as receitas' %>
+
+  <%= f.collection_check_boxes(:recipes_list, :recipe_id, @recipes, :id) %>
+  </div>
+  <%= f.submit 'Enviar', class: 'btn btn-primary' %>
+<% end %>
