@@ -10,12 +10,16 @@ class RecipesListController < ApplicationController
   end
 
   def create
-
+    @recipes_list = RecipeList.created(recipes_list_params)
   end
 
   private
 
   def set_recipe
     @recipes = Recipe.all
+  end
+
+  def recipes_list_params
+    params.require(:recipes_list).permit(:name, :recipes)
   end
 end

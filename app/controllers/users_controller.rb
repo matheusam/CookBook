@@ -15,7 +15,9 @@ class UsersController < ApplicationController
     end
 
     def show
-      #beybug
+      if params
+        @user = User.find(params[:id])
+      end
    end
 
     private

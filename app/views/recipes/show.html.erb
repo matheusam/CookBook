@@ -1,7 +1,9 @@
 <h1><%= @recipe.title %></h1>
 <h3>Detalhes</h3>
 <% if @recipe.photo.attached? %>
-  <%= image_tag @recipe.photo %>
+  <%= image_tag @recipe.photo, class:'avatar' %>
+<% else %>
+  <%#= image_tag Rails.root.join('spec', 'support', 'default.png'), class:'avatar' %>
 <% end %>
 <p><%= @recipe.recipe_type.name %></p>
 <p><%= @recipe.cuisine.name %></p>
@@ -12,7 +14,7 @@
 <h3>Como Preparar</h3>
 <p><%= @recipe.cook_method %></p>
 <h3>Autor da receita</h3>
-<p><%= @recipe.user.email %></p>
+<p><%= link_to @recipe.user.email, user_path(@recipe.user) %></p>
 
 <%= link_to 'Voltar', root_path, class: 'btn btn-secondary' %>
 <% if user_signed_in? && @same_user %>

@@ -2,9 +2,24 @@
 <hr>
 <% if @user.photo.attached? %>
   <%= image_tag @user.photo, class:'avatar'%>
+<% else %>
+  <img src='spec/support/default.png', class='avatar'>
 <% end %>
 <hr>
 <h3>Cadastrado em:</h3>
 <p>
 <%= @user.created_at.strftime("%d/%b/%Y") %></p>
-<%= link_to 'Editar perfil', edit_user_path(current_user), class: 'btn btn-primary' %>
+<% if @user == current_user %>
+  <%= link_to 'Editar perfil', edit_user_path(current_user), class: 'btn btn-primary' %>
+<% end %>
+<hr>
+<% if @user.recipes.any? %>
+  <h1>Receitas do usuário:</h1>
+  <ul>
+    <% @user.recipes.each do |r| %>
+      <li><%= link_to r.title, recipes_path(r.id) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>Esse usuário não possui receitas ainda.</p>
+<% end %>
