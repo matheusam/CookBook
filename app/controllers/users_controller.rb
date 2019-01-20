@@ -1,12 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[edit update show]
 
-    def edit
-      #beybug
-    end
+    def edit; end
 
     def update
-      #beybug
       if @user.update(user_params)
         redirect_to user_path
       else
@@ -27,6 +24,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:photo)
+      params.require(:user).permit(%i[photo name city facebook twitter])
     end
 end

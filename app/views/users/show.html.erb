@@ -6,9 +6,17 @@
   <img src='spec/support/default.png', class='avatar'>
 <% end %>
 <hr>
-<h3>Cadastrado em:</h3>
-<p>
-<%= @user.created_at.strftime("%d/%b/%Y") %></p>
+<h3>Nome</h3>
+<p><%= @user.name %></p>
+<h3>Cidade</h3>
+<p><%= @user.city %></p>
+<h3>Facebook</h3>
+<p><%= @user.facebook %></p>
+<h3>Twitter</h3>
+<p><%= @user.twitter %></p>
+<h3>Membro desde</h3>
+<p><%= @user.created_at.strftime("%d/%b/%Y") %></p>
+<hr>
 <% if @user == current_user %>
   <%= link_to 'Editar perfil', edit_user_path(current_user), class: 'btn btn-primary' %>
 <% end %>
@@ -16,8 +24,8 @@
 <% if @user.recipes.any? %>
   <h1>Receitas do usuário:</h1>
   <ul>
-    <% @user.recipes.each do |r| %>
-      <li><%= link_to r.title, recipes_path(r.id) %></li>
+    <% @user.recipes.each_with_index do |r, index| %>
+      <li><%= link_to r.title, recipes_path(index) %></li>
     <% end %>
   </ul>
 <% else %>

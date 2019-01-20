@@ -1,9 +1,22 @@
 <%= form_for @user do |f| %>
-<h3>Foto atual:</h3>
+<h3>Editar informações pessoais</h3>
 <% if @user.photo.attached? %>
   <%= image_tag @user.photo, class:'avatar'%>
 <% end %>
   <%= f.label :photo, 'Foto'%>
   <%= f.file_field :photo %>
-  <%= f.submit 'Enviar', class: 'btn btn-primary' %>
+<hr>
+  <%= f.label :name, 'Nome' %>
+  <%= f.text_field :name, class: 'form-control col-md-6' %>
+  <%= f.label :city, 'Cidade' %>
+  <%= f.text_field :city, class: 'form-control col-md-6' %>
+  <%= f.label :facebook, 'Facebook' %>
+  <%= f.text_field :facebook, class: 'form-control col-md-6' %>
+  <%= f.label :twitter, 'Twitter' %>
+  <%= f.text_field :twitter, class: 'form-control col-md-6' %>
+  <br>
+  <%= f.submit 'Atualizar perfil', class: 'btn btn-primary' %>
+<hr>
 <% end %>
+<br>
+<%= link_to "Informações de acesso", edit_user_registration_path, class: 'btn btn-warning' %>

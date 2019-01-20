@@ -60,9 +60,13 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    flash[:del] = "Receita apagada com sucesso!"
-    @recipe.destroy
-    redirect_to root_path
+    if @recipe.destroy
+      flash[:del] = "Receita apagada com sucesso!"
+      redirect_to root_path
+    else
+      flash[:del] = "Erro ao apagar receita!"
+      redirect_to root_path
+    end
   end
 
   private
