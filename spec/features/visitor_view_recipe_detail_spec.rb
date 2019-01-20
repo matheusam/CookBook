@@ -82,8 +82,8 @@ feature 'Visitor view recipe details' do
     visit root_path
     click_on recipe.title
 
-    expect(page).to have_css('a.btn:nth-child(14)', text:"Editar")
-    expect(page).to have_css('a.btn:nth-child(15)', text:"Deletar")
+    expect(page).to have_css('a', text:"Editar")
+    expect(page).to have_css('a', text:"Deletar")
 
     click_on 'Sair'
 

@@ -2,10 +2,22 @@
   <p><%= @cuisine.errors[:name] %></p>
 <% end %>
 
+<%= link_to 'Voltar', root_path, class: 'btn btn-secondary' %>
+
 <%= form_with model: @cuisine, class: 'mt-4' do |f| %>
   <div class="form-group">
-    <%= f.label :name, 'Nome' %>
+    <%= f.label :name, 'Nome da nova cozinha' %>
     <%= f.text_field :name, class: 'form-control col-md-6' %>
   </div>
-  <%= f.submit 'Enviar', class: 'btn btn-primary' %>
+  <%= f.submit 'Criar', class: 'btn btn-primary' %>
 <% end %>
+<hr>
+<ul class="list-group">
+  <% if @cuisines.nil? %>
+    <li>Nenhuma cozinha cadastrada ainda...<li>
+  <% else %>
+    <% @cuisines.each do |cuisine| %>
+      <li class="list-group-item"><%= link_to cuisine.name, cuisine %></li>
+    <% end %>
+  <% end %>
+</ul>

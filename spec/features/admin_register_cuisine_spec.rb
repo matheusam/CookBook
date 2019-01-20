@@ -4,9 +4,9 @@ feature 'Admin register cuisine' do
   scenario 'successfully' do
 
     visit root_path
-    click_on 'Cadastrar cozinha'
+    click_on 'Cozinhas'
     fill_in 'Nome', with: 'Arabe'
-    click_on 'Enviar'
+    click_on 'Criar'
 
     expect(page).to have_css('h1', text: 'Arabe')
   end
@@ -14,7 +14,7 @@ feature 'Admin register cuisine' do
   scenario 'and must fill in name' do
     visit new_cuisine_path
     fill_in 'Nome', with: ''
-    click_on 'Enviar'
+    click_on 'Criar'
 
     expect(page).to have_content('Você deve informar o nome da cozinha')
   end
@@ -24,9 +24,9 @@ feature 'Admin register cuisine' do
     cuisine = Cuisine.create(name: 'Arabe')
 
     visit root_path
-    click_on 'Cadastrar cozinha'
+    click_on 'Cozinhas'
     fill_in 'Nome', with: cuisine.name.upcase
-    click_on 'Enviar'
+    click_on 'Criar'
 
     expect(page).to have_css('p', text: 'Essa cozinha já está cadastrada!')
   end
