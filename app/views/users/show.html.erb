@@ -3,7 +3,7 @@
 <% if @user.photo.attached? %>
   <%= image_tag @user.photo, class:'avatar'%>
 <% else %>
-  <img src='spec/support/default.png', class='avatar'>
+  <%= image_tag 'default.png', class:'avatar'%>
 <% end %>
 <hr>
 <h3>Nome</h3>
