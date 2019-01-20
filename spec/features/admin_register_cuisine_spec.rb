@@ -5,7 +5,7 @@ feature 'Admin register cuisine' do
 
     visit root_path
     click_on 'Cozinhas'
-    fill_in 'Nome', with: 'Arabe'
+    fill_in 'Nova cozinha', with: 'Arabe'
     click_on 'Criar'
 
     expect(page).to have_css('h1', text: 'Arabe')
@@ -13,7 +13,7 @@ feature 'Admin register cuisine' do
 
   scenario 'and must fill in name' do
     visit new_cuisine_path
-    fill_in 'Nome', with: ''
+    fill_in 'Nova cozinha', with: ''
     click_on 'Criar'
 
     expect(page).to have_content('Você deve informar o nome da cozinha')
@@ -25,7 +25,7 @@ feature 'Admin register cuisine' do
 
     visit root_path
     click_on 'Cozinhas'
-    fill_in 'Nome', with: cuisine.name.upcase
+    fill_in 'Nova cozinha', with: cuisine.name.upcase
     click_on 'Criar'
 
     expect(page).to have_css('p', text: 'Essa cozinha já está cadastrada!')

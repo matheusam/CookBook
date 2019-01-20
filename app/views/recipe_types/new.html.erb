@@ -1,4 +1,17 @@
 <% if @recipe_type.errors.any? %>
   <p><%= @recipe_type.errors[:name] %></p>
 <% end %>
+
+<%= link_to 'Voltar', root_path, class: 'btn btn-secondary' %>
+<hr>
 <%= render partial: 'form', locals: { recipe_type: @recipe_type } %>
+<hr>
+<ul class="list-group">
+  <% if @recipe_types.nil? %>
+    <li>Nenhum tipo de receita cadastrada ainda...<li>
+  <% else %>
+    <% @recipe_types.each do |recipe_type| %>
+      <li class="list-group-item"><%= link_to recipe_type.name, edit_recipe_type_path(recipe_type) %></li>
+    <% end %>
+  <% end %>
+</ul>

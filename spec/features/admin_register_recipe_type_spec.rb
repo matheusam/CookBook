@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Admin register recipe_type' do
   scenario 'successfully' do
     visit root_path
-    click_on 'Cadastrar tipo de receita'
+    click_on 'Tipos de receitas'
     fill_in 'Nome', with: 'Sobremesa'
     click_on 'Enviar'
 
@@ -22,7 +22,7 @@ feature 'Admin register recipe_type' do
     recipe_type = RecipeType.create(name:'Sobremesa')
 
     visit root_path
-    click_on 'Cadastrar tipo de receita'
+    click_on 'Tipos de receitas'
     fill_in 'Nome', with: recipe_type.name.upcase
     click_on 'Enviar'
 
