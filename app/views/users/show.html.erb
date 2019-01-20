@@ -24,8 +24,8 @@
 <% if @user.recipes.any? %>
   <h1>Receitas do usuário:</h1>
   <ul>
-    <% @user.recipes.each_with_index do |r, index| %>
-      <li><%= link_to r.title, recipes_path(index) %></li>
+    <% @user.recipes.each do |r| %>
+      <li><%= link_to r.title, r %></li>
     <% end %>
   </ul>
 <% else %>
