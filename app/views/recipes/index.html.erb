@@ -20,7 +20,7 @@
 
 <% if @recipes.any? %>
   <%= link_to 'Ver todas as receitas', all_recipes_path, class:'btn btn-primary mb-4 ml-3' %>
-  <%= link_to 'Criar lista de receitas', new_recipes_list_path, class:'btn btn-primary mb-4 ml-3' %>
+  <%= link_to 'Ver listas de receitas', all_recipes_list_path, class:'btn btn-primary mb-4 ml-3' %>
   <div class="row">
     <%= render partial: 'recipe', collection: @recipes %>
   </div>

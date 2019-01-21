@@ -25,5 +25,5 @@
   <%= link_to 'Editar', edit_recipe_path(@recipe), class: 'btn btn-primary' %>
   <%= link_to 'Deletar', @recipe, method: :delete, data: {confirm: 'Deseja apagar essa receita?'} , class: 'btn btn-warning' %>
   <!-- if user admin? -->
-  <%= link_to 'Marcar como destaque', spotlight_recipes_path(@recipe), class: 'btn btn-primary' %>
+  <%= link_to 'Marcar como destaque', spotlight_path(@recipe), class: 'btn btn-primary' %>
 <% end %>

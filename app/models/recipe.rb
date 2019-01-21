@@ -12,4 +12,7 @@ class Recipe < ApplicationRecord
     "#{cook_time} minutos"
   end
 
+  # def spotlight
+  #     spotlight = true
+  # end
 end

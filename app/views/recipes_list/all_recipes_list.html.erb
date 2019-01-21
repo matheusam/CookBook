@@ -1,0 +1,10 @@
+<%= link_to 'Voltar', root_path, class: 'btn btn-secondary' %>
+<%= link_to 'Nova lista de receitas', new_recipes_list_path, class:'btn btn-primary' %>
+<hr>
+<% if @recipes_list.nil? %>
+  <p>Nenhuma lista criada até agora.</p>
+<% else %>
+  <% @recipes_list.each do |recipe_list| %>
+    <li class="list-group-item"><%= link_to recipe_list.name, recipes_list %></li>
+  <% end %>
+<% end %>

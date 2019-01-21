@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit update destroy spotlight_recipes]
+  before_action :set_recipe, only: %i[show edit update destroy spotlight]
   before_action :set_recipe_type, only: %i[index]
   before_action :authenticate_user!, only: %i[new create edit update destroy]
 
@@ -69,10 +69,9 @@ class RecipesController < ApplicationController
     end
   end
 
-  def spotlight_recipes
+  def spotlight
     @recipe.spotlight = true
-    @recipe.save
-    render :show
+    @recipe.update
   end
 
   private
@@ -88,6 +87,6 @@ class RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(%i[title recipe_type_id cuisine_id
                                    difficulty cook_time ingredients
-                                   cook_method photo spotlight_recipes])
+                                   cook_method photo spotlight])
   end
 end
