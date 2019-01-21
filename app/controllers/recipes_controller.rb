@@ -70,8 +70,8 @@ class RecipesController < ApplicationController
   end
 
   def spotlight
-    @recipe.spotlight = true
-    @recipe.update
+    @recipe.update(spotlight: true)
+    redirect_to @recipe
   end
 
   private
