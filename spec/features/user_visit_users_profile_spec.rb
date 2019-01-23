@@ -1,6 +1,7 @@
 require 'rails_helper'
 feature 'User visit users profile' do
-  scenario 'Successfully',login:true do
+  scenario 'Successfully' do
+    user = login
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
     recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
@@ -8,15 +9,15 @@ feature 'User visit users profile' do
                            cook_time: 60,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
-                           user: @user)
+                           user: user)
 
     # simula a ação do usuário
     visit root_path
     click_on recipe.title
-    click_on @user.email
+    click_on user.email
 
     expect(page).to have_css('.avatar')
-    expect(page).to have_css('h1', text:@user.email)
+    expect(page).to have_css('h1', text:user.email)
     expect(page).to have_content(recipe.title)
   end
 end

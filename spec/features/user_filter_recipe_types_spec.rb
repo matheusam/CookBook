@@ -1,6 +1,7 @@
 require 'rails_helper'
 feature 'User filter recipes' do
-  scenario 'Successfully',login:true do
+  scenario 'Successfully' do
+    user = login
     dessert = RecipeType.create(name: 'Sobremesa')
     starter = RecipeType.create(name: 'Entrada')
     cuisine = Cuisine.create(name: 'Brasileira')
@@ -9,13 +10,13 @@ feature 'User filter recipes' do
                            cook_time: 10,
                            ingredients: 'Marmelo',
                            cook_method: 'Cozinhe o marmelo no fogo',
-                           user: @user)
+                           user: user)
     bacon = Recipe.create(title: 'Bacon', recipe_type: starter,
                           cuisine: cuisine, difficulty: 'médio',
                           cook_time: 20,
                           ingredients: 'Porco',
                           cook_method: 'Frite o Porco no fogo',
-                          user: @user)
+                          user: user)
 
     visit root_path
     click_on dessert.name

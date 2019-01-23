@@ -17,9 +17,7 @@ class RecipeTypesController < ApplicationController
     end
   end
 
-  def edit
-  #  byebug
-  end
+  def edit; end
 
   def update
     if @recipe_type.update(recipe_type_params)

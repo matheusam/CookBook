@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 feature 'Visitor view recipe details' do
-  scenario 'successfully',login:true do
+  scenario 'successfully' do
+    user = login
     #cria os dados necessários
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
@@ -10,7 +11,7 @@ feature 'Visitor view recipe details' do
                            cook_time: 60,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
-                           user: @user)
+                           user: user)
 
     # simula a ação do usuário
     visit root_path
@@ -29,8 +30,9 @@ feature 'Visitor view recipe details' do
     expect(page).to have_css('p', text: recipe.cook_method)
   end
 
-  scenario 'and return to recipe list',login:true do
+  scenario 'and return to recipe list' do
     #cria os dados necessários
+    user = login
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
     recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
@@ -38,7 +40,7 @@ feature 'Visitor view recipe details' do
                            cook_time: 60,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
-                           user: @user)
+                           user: user)
 
     # simula a ação do usuário
     visit root_path
@@ -49,7 +51,8 @@ feature 'Visitor view recipe details' do
     expect(current_path).to eq(root_path)
   end
 
-  scenario 'non authed user cant delete or edit',login:true do
+  scenario 'non authed user cant delete or edit' do
+    user = login
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
     recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
@@ -57,18 +60,19 @@ feature 'Visitor view recipe details' do
                            cook_time: 60,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
-                           user: @user)
+                           user: user)
 
     # simula a ação do usuário
     visit root_path
-    click_on 'Sair'
+    logout
     click_on recipe.title
 
-    expect(page).not_to have_css('a', text:"Editar")
-    expect(page).not_to have_css('a', text:"Deletar")
+    expect(page).not_to have_css('a', text: "Editar")
+    expect(page).not_to have_css('a', text: "Deletar")
   end
 
-  scenario 'only authed user owner can delete or edit',login:true do
+  scenario 'only authed user owner can delete or edit' do
+    user = login
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')
     recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
@@ -76,30 +80,29 @@ feature 'Visitor view recipe details' do
                            cook_time: 60,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
-                           user: @user)
+                           user: user)
 
     # simula a ação do usuário
     visit root_path
     click_on recipe.title
 
-    expect(page).to have_css('a', text:"Editar")
-    expect(page).to have_css('a', text:"Deletar")
+    expect(page).to have_css('a', text: "Editar")
+    expect(page).to have_css('a', text: "Deletar")
 
-    click_on 'Sair'
+    logout
 
-    user = User.create(email:'outro@email',
-                password:'outro@email')
+    other_user = create(:user, email: 'outro@email.com')
 
     visit root_path
     click_on 'Login'
-    fill_in 'Email', with: 'outro@email'
-    fill_in 'Senha', with: 'outro@email'
+    fill_in 'Email', with: other_user.email
+    fill_in 'Senha', with: 'rspec@test'
     click_on 'Entrar'
 
     visit root_path
     click_on recipe.title
 
-    expect(page).not_to have_css('a.btn:nth-child(14)', text:"Editar")
-    expect(page).not_to have_css('a.btn:nth-child(15)', text:"Deletar")
+    expect(page).not_to have_css('a.btn:nth-child(14)', text: "Editar")
+    expect(page).not_to have_css('a.btn:nth-child(15)', text: "Deletar")
   end
 end

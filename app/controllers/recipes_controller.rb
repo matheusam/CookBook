@@ -61,12 +61,11 @@ class RecipesController < ApplicationController
 
   def destroy
     if @recipe.destroy
-      flash[:del] = "Receita apagada com sucesso!"
-      redirect_to root_path
+      flash[:del] = 'Receita apagada com sucesso!'
     else
-      flash[:del] = "Erro ao apagar receita!"
-      redirect_to root_path
+      flash[:del] = 'Erro ao apagar receita!'
     end
+    redirect_to root_path
   end
 
   def spotlight
@@ -86,7 +85,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(%i[title recipe_type_id cuisine_id
-                                   difficulty cook_time ingredients
-                                   cook_method photo spotlight])
+                                      difficulty cook_time ingredients
+                                      cook_method photo spotlight])
   end
 end

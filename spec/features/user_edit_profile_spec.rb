@@ -1,6 +1,7 @@
 require 'rails_helper'
 feature 'User edit profile' do
-  scenario 'Personal data',login:true do
+  scenario 'Personal data' do
+    user = login
     visit root_path
     click_on 'Meu perfil'
     click_on 'Editar perfil'
@@ -21,7 +22,8 @@ feature 'User edit profile' do
 
   end
 
-  scenario 'Access data',login:true do
+  scenario 'Access data' do
+    user = login
     visit root_path
     click_on 'Meu perfil'
     click_on 'Editar perfil'

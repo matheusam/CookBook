@@ -6,7 +6,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
-
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -63,15 +63,15 @@ RSpec.configure do |config|
 ###bug    config.include Devise::Test::IntegrationHelpers, type: :controller
 ###bug    config.include Devise::Test::IntegrationHelpers, type: :view
 ###bug  end
-  config.before(:each,login: true) do
-    @user = User.create(email:'rspec@test',
-                password:'rspec@test')
-
-    visit root_path
-    click_on 'Login'
-    fill_in 'Email', with: 'rspec@test'
-    fill_in 'Senha', with: 'rspec@test'
-    click_on 'Entrar'
-  end
-
+  # config.before(:each,login: true) do
+  #   @user = User.create(email:'rspec@test',
+  #               password:'rspec@test')
+  #
+  #   visit root_path
+  #   click_on 'Login'
+  #   fill_in 'Email', with: 'rspec@test'
+  #   fill_in 'Senha', with: 'rspec@test'
+  #   click_on 'Entrar'
+  # end
+  
 end

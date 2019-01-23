@@ -41,7 +41,7 @@ group :development, :test do
   # execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
-  gem 'factory_bot'
+  gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'rspec-rails', '~> 3.8'
   gem 'rubocop', require: false

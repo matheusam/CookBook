@@ -1,14 +1,8 @@
 require 'rails_helper'
 feature 'User Logout' do
   scenario 'Successfully' do
-    user = User.create(email: 'ze1@ig.com', password: '12345678')
-
-    visit root_path
-    click_on 'Login'
-    fill_in 'Email', with: user.email
-    fill_in 'Senha', with: '12345678'
-    click_on 'Entrar'
-    click_on 'Sair'
+    user = login
+    logout
 
     expect(page).to have_content('Login')
     expect(page).to have_content('Criar Conta')

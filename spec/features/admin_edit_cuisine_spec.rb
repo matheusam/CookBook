@@ -1,6 +1,8 @@
 require 'rails_helper'
+
 feature 'Admin edit cuisine' do
-  scenario 'Successfully',login:true do
+  scenario 'Successfully' do
+    user = login
     cuisine = Cuisine.create(name: 'Basileila')
 
     visit root_path
@@ -13,7 +15,8 @@ feature 'Admin edit cuisine' do
     expect(page).to have_css('h1', text:'Brasileira')
   end
 
-  scenario 'and must fill in name',login:true do
+  scenario 'and must fill in name' do
+    user = login
     cuisine = Cuisine.create(name: 'Basileila')
 
     visit root_path
@@ -26,7 +29,8 @@ feature 'Admin edit cuisine' do
     expect(page).to have_content('Você deve informar o nome da cozinha')
   end
 
-  scenario 'Unique',login:true do
+  scenario 'Unique' do
+    user = login
 
     wrong_cuisine = Cuisine.create(name: 'Basileila')
     cuisine = Cuisine.create(name: 'Brasileira')
