@@ -31,14 +31,12 @@ feature 'User view recent recipes' do
                            user: user)
     laranjada = Recipe.create(title: 'Laranjada', recipe_type: recipe_type,
                               cuisine: cuisine, difficulty: 'fácil',
-                              cook_time: 10,
-                              ingredients: 'Laranja',
+                              cook_time: 10, ingredients: 'Laranja',
                               cook_method: 'Cozinhe a laranja no fogo',
                               user: user)
     doce_leite = Recipe.create(title: 'Doce de leite', recipe_type: recipe_type,
                                cuisine: cuisine, difficulty: 'fácil',
-                               cook_time: 10,
-                               ingredients: 'Leite',
+                               cook_time: 10, ingredients: 'Leite',
                                cook_method: 'Cozinhe o leite no fogo',
                                user: user)
 

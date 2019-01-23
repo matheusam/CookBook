@@ -2,7 +2,6 @@ require 'rails_helper'
 
 feature 'Admin register cuisine' do
   scenario 'successfully' do
-
     visit root_path
     click_on 'Cozinhas'
     fill_in 'Nova cozinha', with: 'Arabe'
@@ -20,7 +19,6 @@ feature 'Admin register cuisine' do
   end
 
   scenario 'Unique' do
-
     cuisine = Cuisine.create(name: 'Arabe')
 
     visit root_path

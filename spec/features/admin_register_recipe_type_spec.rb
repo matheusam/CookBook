@@ -19,13 +19,13 @@ feature 'Admin register recipe_type' do
   end
 
   scenario 'Unique' do
-    recipe_type = RecipeType.create(name:'Sobremesa')
+    recipe_type = RecipeType.create(name: 'Sobremesa')
 
     visit root_path
     click_on 'Tipos de receitas'
     fill_in 'Nome', with: recipe_type.name.upcase
     click_on 'Enviar'
 
-    expect(page).to have_css('p', text:'Esse tipo de receita já existe!')
+    expect(page).to have_css('p', text: 'Esse tipo de receita já existe!')
   end
 end

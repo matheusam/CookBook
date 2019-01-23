@@ -1,7 +1,7 @@
 require 'rails_helper'
 feature 'Admin edit recipe type' do
   scenario 'Successfully' do
-    user = login
+    login
     recipe_type = RecipeType.create(name: 'Entrada')
 
     visit root_path
@@ -10,11 +10,11 @@ feature 'Admin edit recipe type' do
     fill_in 'Renomear', with: 'Sobremesa'
     click_on 'Salvar'
 
-    expect(page).to have_css('h1', text:'Sobremesa')
+    expect(page).to have_css('h1', text: 'Sobremesa')
   end
 
   scenario 'and must fill in name' do
-    user = login
+    login
     recipe_type = RecipeType.create(name: 'Entrada')
 
     visit root_path
@@ -27,8 +27,7 @@ feature 'Admin edit recipe type' do
   end
 
   scenario 'Unique' do
-    user = login
-
+    login
     wrong_recipe_type = RecipeType.create(name: 'Entrada')
     recipe_type = RecipeType.create(name: 'Sobremesa')
 

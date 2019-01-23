@@ -1,7 +1,8 @@
 require 'rails_helper'
 feature 'User edit profile' do
   scenario 'Personal data' do
-    user = login
+    login
+
     visit root_path
     click_on 'Meu perfil'
     click_on 'Editar perfil'
@@ -11,19 +12,19 @@ feature 'User edit profile' do
     fill_in 'Twitter', with: 'twitter.com/linconficial'
     click_on 'Atualizar perfil'
 
-    expect(page).to have_css('h3', text:'Nome')
-    expect(page).to have_css('p', text:'Lincon')
-    expect(page).to have_css('h3', text:'Cidade')
-    expect(page).to have_css('p', text:'New York')
-    expect(page).to have_css('h3', text:'Facebook')
-    expect(page).to have_css('p', text:'fb.com/linconficial')
-    expect(page).to have_css('h3', text:'Twitter')
-    expect(page).to have_css('p', text:'twitter.com/linconficial')
-
+    expect(page).to have_css('h3', text: 'Nome')
+    expect(page).to have_css('p', text: 'Lincon')
+    expect(page).to have_css('h3', text: 'Cidade')
+    expect(page).to have_css('p', text: 'New York')
+    expect(page).to have_css('h3', text: 'Facebook')
+    expect(page).to have_css('p', text: 'fb.com/linconficial')
+    expect(page).to have_css('h3', text: 'Twitter')
+    expect(page).to have_css('p', text: 'twitter.com/linconficial')
   end
 
   scenario 'Access data' do
-    user = login
+    login
+
     visit root_path
     click_on 'Meu perfil'
     click_on 'Editar perfil'

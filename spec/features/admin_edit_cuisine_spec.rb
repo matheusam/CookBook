@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Admin edit cuisine' do
   scenario 'Successfully' do
-    user = login
+    login
     cuisine = Cuisine.create(name: 'Basileila')
 
     visit root_path
@@ -12,11 +12,11 @@ feature 'Admin edit cuisine' do
     fill_in 'Renomear', with: 'Brasileira'
     click_on 'Salvar'
 
-    expect(page).to have_css('h1', text:'Brasileira')
+    expect(page).to have_css('h1', text: 'Brasileira')
   end
 
   scenario 'and must fill in name' do
-    user = login
+    login
     cuisine = Cuisine.create(name: 'Basileila')
 
     visit root_path
@@ -30,8 +30,7 @@ feature 'Admin edit cuisine' do
   end
 
   scenario 'Unique' do
-    user = login
-
+    login
     wrong_cuisine = Cuisine.create(name: 'Basileila')
     cuisine = Cuisine.create(name: 'Brasileira')
 

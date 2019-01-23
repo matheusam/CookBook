@@ -6,22 +6,20 @@ feature 'User filter recipes' do
     starter = RecipeType.create(name: 'Entrada')
     cuisine = Cuisine.create(name: 'Brasileira')
     marmelada = Recipe.create(title: 'Marmelada', recipe_type: dessert,
-                           cuisine: cuisine, difficulty: 'fácil',
-                           cook_time: 10,
-                           ingredients: 'Marmelo',
-                           cook_method: 'Cozinhe o marmelo no fogo',
-                           user: user)
+                              cuisine: cuisine, difficulty: 'fácil',
+                              cook_time: 10, ingredients: 'Marmelo',
+                              cook_method: 'Cozinhe o marmelo no fogo',
+                              user: user)
     bacon = Recipe.create(title: 'Bacon', recipe_type: starter,
                           cuisine: cuisine, difficulty: 'médio',
-                          cook_time: 20,
-                          ingredients: 'Porco',
+                          cook_time: 20, ingredients: 'Porco',
                           cook_method: 'Frite o Porco no fogo',
                           user: user)
 
     visit root_path
     click_on dessert.name
 
-    expect(page).to have_css('h1', text:marmelada.title)
+    expect(page).to have_css('h1', text: marmelada.title)
     expect(page).to have_css('li', text: marmelada.recipe_type.name)
     expect(page).to have_css('li', text: marmelada.cuisine.name)
     expect(page).to have_css('li', text: marmelada.difficulty)
@@ -37,6 +35,6 @@ feature 'User filter recipes' do
     visit root_path
     click_on fast_food.name
 
-    expect(page).to have_css('p', text:'Nenhum resultado encontrado.')
+    expect(page).to have_css('p', text: 'Nenhum resultado encontrado.')
   end
 end
