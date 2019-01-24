@@ -1,9 +1,7 @@
 require 'rails_helper'
 feature 'Admin create recipe list' do
   scenario 'successfully' do
-    pending
     login
-
     goiabada = make_recipe(title: 'Goiabada')
     romeu_julieta = make_recipe(title: 'Romeu e julieta')
     marmelada = make_recipe(title: 'Marmelada')
