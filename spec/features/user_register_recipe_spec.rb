@@ -2,9 +2,9 @@ require 'rails_helper'
 
 feature 'User register recipe' do
   scenario 'successfully' do
-    RecipeType.create(name: 'Sobremesa')
-    RecipeType.create(name: 'Entrada')
-    Cuisine.create(name: 'Arabe')
+    create(:recipe_type, name: 'Sobremesa')
+    create(:recipe_type, name: 'Entrada')
+    create(:cuisine, name: 'Arabe')
     user = login
     file_name = 'test.jpg'
 

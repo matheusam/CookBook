@@ -2,7 +2,7 @@ require 'rails_helper'
 feature 'Admin edit recipe type' do
   scenario 'Successfully' do
     login
-    recipe_type = RecipeType.create(name: 'Entrada')
+    recipe_type = make_recipe_type
 
     visit root_path
     click_on 'Tipos de receitas'
@@ -15,7 +15,7 @@ feature 'Admin edit recipe type' do
 
   scenario 'and must fill in name' do
     login
-    recipe_type = RecipeType.create(name: 'Entrada')
+    recipe_type = make_recipe_type
 
     visit root_path
     click_on 'Tipos de receitas'
@@ -28,13 +28,13 @@ feature 'Admin edit recipe type' do
 
   scenario 'Unique' do
     login
-    wrong_recipe_type = RecipeType.create(name: 'Entrada')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
+    bad_recipe_type = make_recipe_type
+    good_recipe_type = make_recipe_type
 
     visit root_path
     click_on 'Tipos de receitas'
-    click_on wrong_recipe_type.name
-    fill_in 'Renomear', with: recipe_type.name.upcase
+    click_on bad_recipe_type.name
+    fill_in 'Renomear', with: good_recipe_type.name.upcase
     click_on 'Salvar'
 
     expect(page).to have_content('Esse tipo de receita já existe!')

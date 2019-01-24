@@ -19,7 +19,7 @@ feature 'Admin register recipe_type' do
   end
 
   scenario 'Unique' do
-    recipe_type = RecipeType.create(name: 'Sobremesa')
+    recipe_type = make_recipe_type
 
     visit root_path
     click_on 'Tipos de receitas'

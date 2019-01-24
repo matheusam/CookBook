@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Admin edit cuisine' do
   scenario 'Successfully' do
     login
-    cuisine = Cuisine.create(name: 'Basileila')
+    cuisine = make_cuisine(name: 'Basileila')
 
     visit root_path
     click_on 'Cozinhas'
@@ -17,7 +17,7 @@ feature 'Admin edit cuisine' do
 
   scenario 'and must fill in name' do
     login
-    cuisine = Cuisine.create(name: 'Basileila')
+    cuisine = make_cuisine(name: 'Basileila')
 
     visit root_path
     click_on 'Cozinhas'
@@ -31,14 +31,14 @@ feature 'Admin edit cuisine' do
 
   scenario 'Unique' do
     login
-    wrong_cuisine = Cuisine.create(name: 'Basileila')
-    cuisine = Cuisine.create(name: 'Brasileira')
+    good_cuisine = make_cuisine(name: 'Basileila')
+    bad_cuisine = make_cuisine(name: 'Brasileira')
 
     visit root_path
     click_on 'Cozinhas'
-    click_on wrong_cuisine.name
+    click_on bad_cuisine.name
     click_on 'Editar'
-    fill_in 'Renomear', with: cuisine.name.upcase
+    fill_in 'Renomear', with: good_cuisine.name.upcase
     click_on 'Salvar'
 
     expect(page).to have_content('Essa cozinha já está cadastrada!')

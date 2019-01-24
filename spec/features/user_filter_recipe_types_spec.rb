@@ -2,19 +2,19 @@ require 'rails_helper'
 feature 'User filter recipes' do
   scenario 'Successfully' do
     user = login
-    dessert = RecipeType.create(name: 'Sobremesa')
-    starter = RecipeType.create(name: 'Entrada')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    marmelada = Recipe.create(title: 'Marmelada', recipe_type: dessert,
-                              cuisine: cuisine, difficulty: 'fácil',
-                              cook_time: 10, ingredients: 'Marmelo',
-                              cook_method: 'Cozinhe o marmelo no fogo',
-                              user: user)
-    bacon = Recipe.create(title: 'Bacon', recipe_type: starter,
-                          cuisine: cuisine, difficulty: 'médio',
-                          cook_time: 20, ingredients: 'Porco',
-                          cook_method: 'Frite o Porco no fogo',
-                          user: user)
+    dessert = create(:recipe_type, name: 'Sobremesa')
+    starter = create(:recipe_type, name: 'Entrada')
+    cuisine = create(:cuisine, name: 'Brasileira')
+    marmelada = create(:recipe, title: 'Marmelada', recipe_type: dessert,
+                                cuisine: cuisine, difficulty: 'fácil',
+                                cook_time: 10, ingredients: 'Marmelo',
+                                cook_method: 'Cozinhe o marmelo no fogo',
+                                user: user)
+    bacon = create(:recipe, title: 'Bacon', recipe_type: starter,
+                            cuisine: cuisine, difficulty: 'médio',
+                            cook_time: 20, ingredients: 'Porco',
+                            cook_method: 'Frite o Porco no fogo',
+                            user: user)
 
     visit root_path
     click_on dessert.name

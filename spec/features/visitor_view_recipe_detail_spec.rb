@@ -2,15 +2,8 @@ require 'rails_helper'
 
 feature 'Visitor view recipe details' do
   scenario 'successfully' do
-    user = login
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
-                           cuisine: cuisine, difficulty: 'Médio',
-                           cook_time: 60, ingredients: 'Farinha,açucar,cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços '\
-                           'pequenos, misture com o restante dos ingredientes',
-                           user: user)
+    login
+    recipe = make_recipe
 
     visit root_path
     click_on recipe.title
@@ -28,15 +21,8 @@ feature 'Visitor view recipe details' do
   end
 
   scenario 'and return to recipe list' do
-    user = login
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
-                           cuisine: cuisine, difficulty: 'Médio', cook_time: 60,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços '\
-                           'pequenos, misture com o restante dos ingredientes',
-                           user: user)
+    login
+    recipe = make_recipe
 
     visit root_path
     click_on recipe.title
@@ -46,15 +32,8 @@ feature 'Visitor view recipe details' do
   end
 
   scenario 'non authed user cant delete or edit' do
-    user = login
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
-                           cuisine: cuisine, difficulty: 'Médio', cook_time: 60,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços '\
-                           'pequenos, misture com o restante dos ingredientes',
-                           user: user)
+    login
+    recipe = make_recipe
 
     visit root_path
     logout
@@ -66,14 +45,7 @@ feature 'Visitor view recipe details' do
 
   scenario 'only authed user owner can delete or edit' do
     user = login
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
-                           cuisine: cuisine, difficulty: 'Médio', cook_time: 60,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           cook_method: 'Cozinhe a cenoura, corte em pedaços '\
-                           'pequenos, misture com o restante dos ingredientes',
-                           user: user)
+    recipe = create(:recipe, user: user)
 
     visit root_path
     click_on recipe.title

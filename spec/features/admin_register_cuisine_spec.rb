@@ -19,7 +19,7 @@ feature 'Admin register cuisine' do
   end
 
   scenario 'Unique' do
-    cuisine = Cuisine.create(name: 'Arabe')
+    cuisine = make_cuisine
 
     visit root_path
     click_on 'Cozinhas'

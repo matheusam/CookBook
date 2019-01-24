@@ -14,11 +14,11 @@ class RecipesController < ApplicationController
   end
 
   def show
-    if current_user
-      @same_user = @recipe.user.email == current_user.email
-    else
-      @same_user = false
-    end
+    @same_user = if current_user
+                   @recipe.user.email == current_user.email
+                 else
+                   false
+                 end
   end
 
   def new
@@ -60,11 +60,11 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    if @recipe.destroy
-      flash[:del] = 'Receita apagada com sucesso!'
-    else
-      flash[:del] = 'Erro ao apagar receita!'
-    end
+    flash[:del] = if @recipe.destroy
+                    'Receita apagada com sucesso!'
+                  else
+                    'Erro ao apagar receita!'
+                  end
     redirect_to root_path
   end
 

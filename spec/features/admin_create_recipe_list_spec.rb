@@ -1,23 +1,12 @@
 require 'rails_helper'
 feature 'Admin create recipe list' do
   scenario 'successfully' do
-    user = login
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    cuisine = Cuisine.create(name: 'Brasileira')
-    goiabada = Recipe.create(title: 'goiabada', recipe_type: recipe_type,
-                             cuisine: cuisine, difficulty: 'Médio',
-                             cook_time: 60, ingredients: 'goiaba',
-                             cook_method: 'Cozinhe a goiaba', user: user)
-    romeu_julieta = Recipe.create(title: 'romeu e julieta',
-                                  recipe_type: recipe_type, cuisine: cuisine,
-                                  difficulty: 'Médio', cook_time: 60,
-                                  ingredients: 'goiaba e queijo',
-                                  cook_method: 'Coloque a goiaba no queijo',
-                                  user: user)
-    marmelada = Recipe.create(title: 'marmelo', recipe_type: recipe_type,
-                              cuisine: cuisine, difficulty: 'Médio',
-                              cook_time: 60, ingredients: 'marmelo',
-                              cook_method: 'Cozinhe a goiaba', user: user)
+    pending
+    login
+
+    goiabada = make_recipe(title: 'Goiabada')
+    romeu_julieta = make_recipe(title: 'Romeu e julieta')
+    marmelada = make_recipe(title: 'Marmelada')
 
     visit root_path
     click_on 'Ver listas de receitas'
