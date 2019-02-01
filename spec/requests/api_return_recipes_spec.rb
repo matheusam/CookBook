@@ -4,6 +4,7 @@ describe 'API return recipes' do
   it 'Successfully' do
     recipe = create(:recipe, title: 'recipe1')
     other_recipe = create(:recipe, title: 'recipe2')
+    
     get "/api/v1/recipes"
 
     expect(response).to have_http_status(200)
