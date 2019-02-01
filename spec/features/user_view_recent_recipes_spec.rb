@@ -2,12 +2,12 @@ require 'rails_helper'
 feature 'User view recent recipes' do
   scenario 'Last six recipes' do
     rapadura = make_recipe(title: 'rapadura')
-    marmelada = make_recipe
-    goiabada = make_recipe
-    bananada = make_recipe
-    figada = make_recipe
-    laranjada = make_recipe
-    doce_leite = make_recipe
+    marmelada = make_recipe(title: 'laranha')
+    goiabada = make_recipe(title: 'maça')
+    bananada = make_recipe(title: 'coconut')
+    figada = make_recipe(title: 'amora')
+    laranjada = make_recipe(title: 'abacate')
+    doce_leite = make_recipe(title: 'foobar')
 
     visit root_path
 

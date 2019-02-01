@@ -11,4 +11,9 @@ Rails.application.routes.draw do
   get 'all_recipe_lists', to: 'recipe_lists#all', as: 'all_recipe_lists'
   get 'search', to: 'recipes#search', as: 'search'
   get 'all_recipes', to: 'recipes#all_recipes', as: 'all_recipes'
+  namespace 'api', defaults: { format: :json } do
+    namespace 'v1' do
+      get 'recipes', to: 'recipes#all'
+    end
+  end
 end
