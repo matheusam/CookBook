@@ -1,5 +1,5 @@
-class RecipesListController < ApplicationController
-  before_action :set_recipes, only: %i[show all_recipes_list new create]
+class RecipeListsController < ApplicationController
+  before_action :set_recipes, only: %i[show all new]
 
   def show; end
 
@@ -8,7 +8,8 @@ class RecipesListController < ApplicationController
   end
 
   def create
-    @recipes_list = RecipeList.new(recipes_list_params)
+    #byebug
+    @recipes_list = List.recipes.new(name: params[:name], recipes: params[:recipes])
     if @recipes_list.save
       redirect_to @recipes_list
     else
@@ -16,7 +17,7 @@ class RecipesListController < ApplicationController
     end
   end
 
-  def all_recipes_list; end
+  def all; end
 
   private
 
@@ -25,6 +26,6 @@ class RecipesListController < ApplicationController
   end
 
   def recipes_list_params
-    params.require(:recipes_list).permit(:name, :recipes)
+    params.require(:recipe_lists).permit(:name, :recipes)
   end
 end

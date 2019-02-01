@@ -2,8 +2,8 @@ class Recipe < ApplicationRecord
   belongs_to :recipe_type
   belongs_to :cuisine
   belongs_to :user
-  # ERRRADOOOOOOOOOO00000000
-  # has_and_belongs_to_many :recipe_lists
+  has_many :lists
+  has_many :lists, through: :recipe_lists
   has_one_attached :photo
 
   validates :title, :recipe_type, :cuisine, :difficulty,
@@ -12,8 +12,4 @@ class Recipe < ApplicationRecord
   def cook_time_min
     "#{cook_time} minutos"
   end
-
-  # def spotlight
-  #     spotlight = true
-  # end
 end

@@ -1,0 +1,7 @@
+<%= link_to 'Voltar', root_path, class: 'btn btn-secondary' %>
+<hr>
+<h1><%= @recipes_list.name %></h1>
+<ul>
+<% @recipes_list.recipes.each do |recipe| %>
+ <li class="list-group-item"><%= link_to recipe.title, recipe %></li>
+<% end %>

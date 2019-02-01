@@ -1,11 +1,12 @@
-<%= form_for :recipelists_recipes, class: 'mt-4', local: true do |f| %>
+<%= form_with url: recipe_lists_path, class: 'mt-4', local: true do |f| %>
   <div class="form-group">
     <%= f.label :name, 'Nome da lista:' %>
     <%= f.text_field :name, class: 'form-control col-md-6' %>
   </div>
   <div class="form-group">
-  <%= f.label :recipes_list, 'Selecione as receitas' %>
-  <%= f.collection_check_boxes(:recipe_ids, @recipes, :id, :title) %>
+  <%= f.label :recipes, 'Selecione as receitas' %>
+  <br>
+  <%= f.collection_check_boxes(:recipes, @recipes, :id, :title) %>
   </div>
   <%= f.submit 'Criar', class: 'btn btn-primary' %>
 <% end %>
