@@ -41,6 +41,20 @@ class Api::V1::RecipesController < Api::V1::ApiController
     end
   end
 
+  def update
+    begin
+      recipe = set_recipe
+      if recipe.user.id.to_s == params[:user]
+         recipe.update(recipe_params)
+         render status: 200, json: { msg: 'Receita atualizada com sucesso' }
+      else
+        render status: 403, json: { msg: 'Usuário não confere' }
+      end
+    rescue
+      render status: 404, json: { msg: 'Erro ao processar solicitação' }
+    end
+  end
+
   private
 
   def set_recipe
