@@ -9,6 +9,15 @@ class Api::V1::RecipesController < Api::V1::ApiController
     end
   end
 
+  def show
+    begin
+      recipe = Recipe.find(params[:id])
+      render status: 200, json: recipe
+    rescue
+      render status: 404, json: { msg: 'Nenhuma receita encontrada' }
+    end
+  end
+
   def create
     recipe = Recipe.new(recipe_params)
     if recipe.save

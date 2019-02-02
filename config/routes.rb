@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace 'api', defaults: { format: :json } do
     namespace 'v1' do
       get 'recipes', to: 'recipes#all'
+      get 'recipes/:id', to: 'recipes#show'
       post 'recipes/new(.:format)', to: 'recipes#create'
     end
   end

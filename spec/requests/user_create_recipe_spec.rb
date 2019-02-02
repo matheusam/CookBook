@@ -12,7 +12,6 @@ describe 'API return recipes' do
     post "/api/v1/recipes/new/", params: recipe
 
     expect(response).to have_http_status(201)
-    # expect(JSON.parse(response.body)[recipe.id]['title']).to eq(recipe.title)
   end
 
   it 'Fail' do
