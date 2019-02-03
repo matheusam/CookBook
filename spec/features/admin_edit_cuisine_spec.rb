@@ -8,7 +8,6 @@ feature 'Admin edit cuisine' do
     visit root_path
     click_on 'Cozinhas'
     click_on cuisine.name
-    click_on 'Editar'
     fill_in 'Renomear', with: 'Brasileira'
     click_on 'Salvar'
 
@@ -22,7 +21,6 @@ feature 'Admin edit cuisine' do
     visit root_path
     click_on 'Cozinhas'
     click_on cuisine.name
-    click_on 'Editar'
     fill_in 'Renomear', with: ''
     click_on 'Salvar'
 
@@ -37,7 +35,6 @@ feature 'Admin edit cuisine' do
     visit root_path
     click_on 'Cozinhas'
     click_on bad_cuisine.name
-    click_on 'Editar'
     fill_in 'Renomear', with: good_cuisine.name.upcase
     click_on 'Salvar'
 

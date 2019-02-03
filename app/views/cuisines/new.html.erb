@@ -17,7 +17,7 @@
     <li>Nenhuma cozinha cadastrada ainda...<li>
   <% else %>
     <% @cuisines.each do |cuisine| %>
-      <li class="list-group-item"><%= link_to cuisine.name, cuisine %></li>
+      <li class="list-group-item"><%= link_to cuisine.name, edit_cuisine_path(cuisine) %></li>
     <% end %>
   <% end %>
 </ul>

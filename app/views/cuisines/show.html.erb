@@ -1,2 +1,10 @@
 <h1><%= @cuisine.name %></h1>
-<%= link_to 'Editar', edit_cuisine_path(@cuisine), class: 'btn btn-primary' %>
+<% if @cuisine.recipes.any? %>
+  <div class="row">
+    <%= render partial: '/recipes/recipe', collection: @cuisine.recipes %>
+  </div>
+<% else %>
+  <p class="text-center">
+    <%= "Nenhuma receita #{@cuisine.name} cadastrada" %>
+  </p>
+<% end %>

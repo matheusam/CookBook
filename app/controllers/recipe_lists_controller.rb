@@ -9,7 +9,8 @@ class RecipeListsController < ApplicationController
 
   def create
     # byebug
-    @recipes_list = List.recipes.new(name: params[:name], recipes: params[:recipes])
+    @recipes_list = List.recipes.new(name: params[:name],
+                                     recipes: params[:recipes])
     if @recipes_list.save
       redirect_to @recipes_list
     else
