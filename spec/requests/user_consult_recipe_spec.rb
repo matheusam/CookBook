@@ -14,6 +14,5 @@ describe 'User consult recipe' do
 
     expect(response).to have_http_status(404)
     expect(JSON.parse(response.body)['msg']).to eq('Nenhuma receita encontrada')
-
   end
 end

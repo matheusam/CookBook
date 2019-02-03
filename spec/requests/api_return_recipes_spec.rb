@@ -2,10 +2,9 @@ require 'rails_helper'
 
 describe 'API return recipes' do
   it 'Successfully' do
-    recipe = create(:recipe, title: 'recipe1')
-    other_recipe = create(:recipe, title: 'recipe2')
-    
-    get "/api/v1/recipes"
+    recipe = create(:recipe, title: 'recipe')
+    other_recipe = create(:recipe, title: 'other_recipe')
+    get '/api/v1/recipes'
 
     expect(response).to have_http_status(200)
     expect(JSON.parse(response.body)[0]['title']).to eq(recipe.title)
@@ -13,7 +12,7 @@ describe 'API return recipes' do
   end
 
   it 'Fail' do
-    get "/api/v1/recipes"
+    get '/api/v1/recipes'
 
     expect(response).to have_http_status(404)
     expect(JSON.parse(response.body)['msg']).to eq('Nenhuma receita cadastrada')

@@ -3,7 +3,7 @@ describe 'User edit recipe' do
   it 'Successfully' do
     recipe = create(:recipe)
     update = { id: recipe.id, title: 'recipe', difficulty: 'low', cook_time: 10,
-               ingredients: 'blablabla', cook_method: 'blabla', user: recipe.user.id }
+               ingredients: 'blala', cook_method: 'bbla', user: recipe.user.id }
     put '/api/v1/recipes/', params: update
 
     expect(response).to have_http_status(200)
