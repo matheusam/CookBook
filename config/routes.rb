@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get 'recipes', to: 'recipes#all'
       get 'recipes/:id', to: 'recipes#show'
       get 'cuisines/:id', to: 'cuisines#show'
+      get 'recipe_types/:id', to: 'recipe_types#show'
       put 'recipes/(.:format)', to: 'recipes#update'
       post 'recipes/new(.:format)', to: 'recipes#create'
       delete 'recipes/(.:format)', to: 'recipes#destroy'
