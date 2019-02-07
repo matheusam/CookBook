@@ -79,3 +79,4 @@ Abaixo serão descritos os end-points e seus retornos:
 
 * Autenticação pela API
 * Token na API
+* Mailer
