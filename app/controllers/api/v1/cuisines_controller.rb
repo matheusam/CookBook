@@ -8,12 +8,12 @@ class Api::V1::CuisinesController < Api::V1::ApiController
     end
   end
 
-  def show_all
+  def all
     cuisines = Cuisine.all
-    if cuisines.nil?
-      render status: :not_found, json: { msg: 'Nenhuma cozinha cadastrada' }
-    else
+    if cuisines.any?
       render status: :ok, json: cuisines
+    else
+      render status: :not_found, json: { msg: 'Nenhuma cozinha cadastrada' }
     end
   end
 end

@@ -7,4 +7,13 @@ class Api::V1::RecipeTypesController < Api::V1::ApiController
       render status: :ok, json: { recipe_type: recipe_type.name }
     end
   end
+
+  def all
+    recipe_types = RecipeType.all
+    if recipe_types.any?
+      render status: :ok, json: recipe_types
+    else
+      render status: :not_found, json: { msg: 'Nenhum tipo de receita cadastrada' }
+    end
+  end
 end
