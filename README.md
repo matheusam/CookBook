@@ -30,7 +30,36 @@ Abaixo serão descritos os end-points e seus retornos:
 
 * `get /api/v1/recipes`
   * retorna todas receitas em uma array ao receber um GET, exemplo:
-    * `[{"id":1,"title":"Feijoada","difficulty":"Médio","cook_time":120,"created_at":"2019-02-06T21:35:04.957Z","updated_at":"2019-02-06T21:35:04.957Z","ingredients":"Feijão e carnes.","cook_method":"Misturar o feijão com as carnes.","recipe_type_id":3,"cuisine_id":2,"user_id":1,"spotlight":null},{"id":2,"title":"Strudel","difficulty":"Fácil","cook_time":30,"created_at":"2019-02-06T21:35:04.980Z","updated_at":"2019-02-06T21:35:04.980Z","ingredients":"Maça, uvas passas, massa folheada","cook_method":"Cozinhar a maçã e colocar na massa com uva passas.","recipe_type_id":4,"cuisine_id":3,"user_id":2,"spotlight":null}]`
+    * `[
+   {
+      "id":1,
+      "title":"Feijoada",
+      "difficulty":"Médio",
+      "cook_time":120,
+      "created_at":"2019-02-06T21:35:04.957Z",
+      "updated_at":"2019-02-06T21:35:04.957Z",
+      "ingredients":"Feijão e carnes.",
+      "cook_method":"Misturar o feijão com as carnes.",
+      "recipe_type_id":3,
+      "cuisine_id":2,
+      "user_id":1,
+      "spotlight":null
+   },
+   {
+      "id":2,
+      "title":"Strudel",
+      "difficulty":"Fácil",
+      "cook_time":30,
+      "created_at":"2019-02-06T21:35:04.980Z",
+      "updated_at":"2019-02-06T21:35:04.980Z",
+      "ingredients":"Maça, uvas passas, massa folheada",
+      "cook_method":"Cozinhar a maçã e colocar na massa com uva passas.",
+      "recipe_type_id":4,
+      "cuisine_id":3,
+      "user_id":2,
+      "spotlight":null
+   }
+]`
 
 
 * `get /api/v1/recipes/<id>`

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
       get 'recipes', to: 'recipes#all'
       get 'recipes/:id', to: 'recipes#show'
+      get 'cuisines', to: 'cuisines#show_all'
       get 'cuisines/:id', to: 'cuisines#show'
       get 'recipe_types/:id', to: 'recipe_types#show'
       put 'recipes/(.:format)', to: 'recipes#update'
