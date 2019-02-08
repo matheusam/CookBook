@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe 'Api consult recipe type name' do
   it 'Successfully' do
-    recipe_type = create(:recipe_type, name:'foobar')
+    recipe_type = create(:recipe_type, name: 'foobar')
 
     get "/api/v1/recipe_types/#{recipe_type.id}"
 

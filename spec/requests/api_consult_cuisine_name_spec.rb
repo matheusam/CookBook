@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe 'Api consult cuisine name' do
   it 'Successfully' do
-    cuisine = create(:cuisine, name:'foobar')
+    cuisine = create(:cuisine, name: 'foobar')
 
     get "/api/v1/cuisines/#{cuisine.id}"
 

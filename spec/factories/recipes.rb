@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :recipe do
-    title { FFaker::Lorem.phrase }
+    title { |n| "Prato#{n}test" }
     recipe_type
     cuisine
     difficulty { %w[Fácil Médio Difícil].sample }

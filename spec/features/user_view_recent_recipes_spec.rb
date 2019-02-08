@@ -1,13 +1,13 @@
 require 'rails_helper'
 feature 'User view recent recipes' do
   scenario 'Last six recipes' do
-    rapadura = create(:recipe, title: 'rapadura_test')
-    marmelada = create(:recipe, title: 'marmelada_test')
-    goiabada = create(:recipe, title: 'goiabada_test')
-    bananada = create(:recipe, title: 'bananada_test')
-    figada = create(:recipe, title: 'figada_test')
-    laranjada = create(:recipe, title: 'laranjada_test')
-    doce_leite = create(:recipe, title: 'doce_leite_test')
+    rapadura = create(:recipe, title: 'rapadura')
+    marmelada = create(:recipe, title: 'marmelada')
+    goiabada = create(:recipe, title: 'goiabada')
+    bananada = create(:recipe, title: 'bananada')
+    figada = create(:recipe, title: 'figada')
+    laranjada = create(:recipe, title: 'laranjada')
+    doce_leite = create(:recipe, title: 'doce_leite')
 
     visit root_path
 
